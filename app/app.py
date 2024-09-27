@@ -24,7 +24,7 @@ celery = make_celery(app)
 def create_es_client():
     while True:
         try:
-            es = Elasticsearch(hosts=["http://elasticsearch:9200"])
+            es = Elasticsearch(hosts=["http://elasticsearch:9200"], timeout=30)  # Increase timeout
             if es.ping():
                 print("Connected to Elasticsearch")
                 return es
